@@ -184,29 +184,74 @@ def get_max(a):
 
 # get the list of max in both row and column
 list_max = []
+list_max_index = []
 for i in range(len(a)):
     for j in range(len(a)):
         if a[i][j] == get_max(a[i]) and a[i][j] == get_max(a_by_column[j]):
             x = a[i][j]
             list_max.append(x)
-
-# diagonal_1
+            temp3 = [i,j]
+            list_max_index.append(temp3)
+ 
+# diagonal list 1
 diagonal_1 = []
-for i in range(n):
-    for j in range(n):
-        if i == j:
-            diagonal_1.append(a[i][j])
-# diagonal_2
+diagonal_list_1 = []
+for i in range(len(list_max_index)):
+    add = list_max_index[i][0] + list_max_index[i][1]
+    if add > n:
+        i_1 = n-1
+        j_1 = list_max_index[i][1]
+        end1 = list_max_index[i][1]
+    elif add == n:
+        i_1 = n - 1
+        j_1 = 1
+        end1 = 1
+    else:
+        i_1 = add
+        j_1 = 0
+        end1 = 0
+    while i_1 >= end1:
+        temp = a[i_1][j_1]
+        diagonal_1.append(temp)
+        i_1 -= 1
+        j_1 += 1
+    diagonal_list_1.append(diagonal_1)
+    diagonal_1 = []
+
+# diagonal list 2
 diagonal_2 = []
-for i in range(n):
-    for j in range(n):
-        if i == n - (j+1):
-            diagonal_2.append(a[i][j])
+diagonal_list_2 = []
+for i in range(len(list_max_index)):
+    minus = list_max_index[i][0] - list_max_index[i][1]
+    if minus < 0:
+        i_2 = 0
+        j_2 = abs(minus)
+        end2 = n - abs(minus) - 1
+    else:
+        i_2 = minus
+        j_2 = 0
+        end2 = n - 1
+    while i_2 <= end2:
+        temp = a[i_2][j_2]
+        diagonal_2.append(temp)
+        i_2 += 1
+        j_2 += 1
+    diagonal_list_2.append(diagonal_2)
+    diagonal_2 = []
 
-x = 0
-for i in range(len(list_max)):
-    if list_max[i] in diagonal_1 or list_max[i] in diagonal_2:
-        x += 1
 
+# Check max
+index = 0
+for i in list_max:
+    for j in range(len(diagonal_list_1)):
+        if i == get_max(diagonal_list_1[j]) and i == get_max(diagonal_list_2[j]):
+            index += 1
+            # print(i)
+
+print(index)
+print(diagonal_list_1)
+print(diagonal_list_2)
+
+print(x)
 print(list_max)
-print(diagonal_1)
+print(list_max_index)
