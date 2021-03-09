@@ -10,14 +10,21 @@ values = []
 
 # get values in a cell
 for file in excel_files: 
+    # open workbook
     workbook = openpyxl.load_workbook(file)
+
+    # select worksheet
     worksheet = workbook['SalesOrders']
+
+    # get cell value
     cell_value = worksheet['G11'].value
     values.append(cell_value)
 
     print(cell_value)
 
 # Create new sheets
-file_data1 = openpyxl.load_workbook(excel_files[0])
-file_data1.create_sheet('NewSheet1')
-file_data1.save(excel_files[0])
+for file in excel_files:
+    workbook = openpyxl.load_workbook(file)
+    if 'NewSheet' not in workbook.sheetnames:
+        workbook.create_sheet('NewSheet')
+        workbook.save(file)
