@@ -17,3 +17,7 @@ for file in excel_files:
 
     print(cell_value)
 
+# Create new sheets
+file_data1 = openpyxl.load_workbook(excel_files[0])
+file_data1.create_sheet('NewSheet1')
+file_data1.save(excel_files[0])
