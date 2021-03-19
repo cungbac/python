@@ -43,10 +43,25 @@ class BST:
                 cur = cur.left
         return ans.data
 
+    def print_tree(self):
+        cur = self.root
+        # print(cur.data)
+        while cur.left:
+            print(cur.left.data)
+            cur = cur.left
+
+        while cur.right:
+            print(cur.right.data)
+            cur = cur.right
+
+
 a = BST()
-n = int(input())
-temp = input().split()
+# n = int(input())
+# temp = input().split()
+temp = [6,4,7,9,10,2,3,1,6]
 for i in range(len(temp)):
     a.addToBST(int(temp[i]))
     
-print(a.minBST())
+# print(a.minBST())
+
+a.print_tree()
