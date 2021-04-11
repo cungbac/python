@@ -18,7 +18,6 @@ import pytesseract
 def crawl_company_info():
     """This is to scrap company information from thongtincongty.com"""
     # open browser
-
     driver = webdriver.Chrome('chromedriver')
 
     # set time sleep
