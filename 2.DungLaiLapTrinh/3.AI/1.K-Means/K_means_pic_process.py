@@ -34,6 +34,14 @@ for i in range(len(img2)):
 # Restore origin shape
 img2 = img2.reshape(height, width, 3)
 
+# for i in range(width):
+#     for j in range(height):
+
+# print(img2)
 # Show image
+fig = plt.figure(frameon=False)
+ax = plt.Axes(fig, [0.,0.,1.,1.])
+ax.set_axis_off()
+fig.add_axes(ax)
 plt.imshow(img2)
-plt.show
+plt.show()
