@@ -39,6 +39,14 @@ img2 = img2.reshape(height, width, 3)
 img2 = Image.fromarray(img2)
 img2.save('img2.jpg')
 
+# for i in range(width):
+#     for j in range(height):
+
+# print(img2)
 # Show image
+fig = plt.figure(frameon=False)
+ax = plt.Axes(fig, [0.,0.,1.,1.])
+ax.set_axis_off()
+fig.add_axes(ax)
 plt.imshow(img2)
 plt.show()
