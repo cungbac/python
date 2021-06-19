@@ -3,9 +3,13 @@ import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 import numpy as np
 import copy
+from PIL import Image
+
 
 # read image
 img = plt.imread('pic1.jpg')
+print(img[:10])
+print(img.shape)
 
 height = img.shape[0]
 width = img.shape[1]
@@ -23,16 +27,17 @@ labels = kmeans.predict(img)
 clusters = kmeans.cluster_centers_
 
 # update img
-# for i in range(len(clusters)):
-#     for j in range(len(img2)):
-#         if labels[j] == i:
-#             img2[j] = clusters[i]
-
 for i in range(len(img2)):
     img2[i] = clusters[labels[i]]
 
+img3 = np.unique(img2)
+
+print(len(img3))
+
 # Restore origin shape
 img2 = img2.reshape(height, width, 3)
+img2 = Image.fromarray(img2)
+img2.save('img2.jpg')
 
 # for i in range(width):
 #     for j in range(height):

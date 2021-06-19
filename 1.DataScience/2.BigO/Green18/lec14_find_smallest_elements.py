@@ -1,4 +1,4 @@
-import sys
+mimport sys
 sys.setrecursionlimit(500000)
 class node:
     def __init__(self, x = 0, left = None, right = None):

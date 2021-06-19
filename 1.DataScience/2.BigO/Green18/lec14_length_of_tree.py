@@ -35,7 +35,7 @@ class BinaryTree:
         else:
             self.root.addToNode(data)
 
-    def print_tree(self):
+    def length_left(self):
         cur = self.root
         print(cur.data)
         while cur.left:
