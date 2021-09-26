@@ -1,7 +1,7 @@
 from abc import ABCMeta, abstractmethod
 
 # Abstract class
-class Account:
+class Account(metaclass=ABCMeta):
     @abstractmethod
     def createAccount(self, email, password):
         pass
@@ -105,7 +105,7 @@ while True:
         print('Enter your password')
         password = input()
         ath_status = savingsAccount.authenticate(email, password)
-        
+
         if ath_status == True:
             while True:
                 print('Enter 1 to withdraw')
