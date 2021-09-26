@@ -95,7 +95,6 @@ while True:
                 print('Enter your deposit')
                 deposit = int(input())
                 savingsAccount.createAccount(email, name, password, deposit)
-                print('Your account has been created')
                 break
             
     # Login to an existing account
