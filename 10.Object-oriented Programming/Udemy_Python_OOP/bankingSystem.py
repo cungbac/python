@@ -1,5 +1,6 @@
 from abc import ABCMeta, abstractmethod
 
+# Abstract class
 class Account:
     @abstractmethod
     def createAccount(self, email, password):
@@ -21,6 +22,7 @@ class Account:
     def displayBalance(self):
         pass
 
+# Saving Account Class
 class SavingsAccount(Account):
     def __init__(self):
         self.savingsAccount = {}
@@ -71,9 +73,9 @@ while True:
     print('Enter 2 to access an existing account')
     print('Enter 3 to exit')
 
-    # Create a new account
     userChoice = int(input())
-    
+
+    # Create a new account
     if userChoice == 1:
         print('Enter your email')
         email = input()
@@ -93,6 +95,7 @@ while True:
                 print('Enter your deposit')
                 deposit = int(input())
                 savingsAccount.createAccount(email, name, password, deposit)
+                print('Your account has been created')
                 break
             
     # Login to an existing account
@@ -102,6 +105,7 @@ while True:
         print('Enter your password')
         password = input()
         ath_status = savingsAccount.authenticate(email, password)
+        
         if ath_status == True:
             while True:
                 print('Enter 1 to withdraw')
@@ -115,13 +119,16 @@ while True:
                     withdrawAmount = int(input())
                     print(withdrawAmount)
                     savingsAccount.withdraw(withdrawAmount)
+
                 elif userChoice == 2:
                     print('Enter your deposit amount')
                     depositAmount = int(input())
                     print(depositAmount)
                     savingsAccount.deposit(depositAmount)
+
                 elif userChoice == 3:
                     savingsAccount.displayBalance()
+
                 elif userChoice == 4:
                     break
     # Exit
