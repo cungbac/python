@@ -29,7 +29,6 @@ class SavingsAccount(Account):
     
     def createAccount(self, email, name, password, deposit = 0):
         if email not in self.savingsAccount.keys():
-            self.accountEmail = email
             self.savingsAccount[email] = [name, hash(password), deposit]
             print('Your account has been created')
         else:
@@ -39,7 +38,9 @@ class SavingsAccount(Account):
         if email in self.savingsAccount.keys():
             if hash(password) == self.savingsAccount[email][1]:
                 print('Login successfully')
-                self.accountEmail = email
+                print('Welcome {} to ABC Bank'.format(self.savingsAccount[email][0]))
+                
+                self.accountLogin = email
                 return True
             else:
                 print('Wrong password')
@@ -49,20 +50,20 @@ class SavingsAccount(Account):
             return False
 
     def withdraw(self, withdrawAmount):
-        if withdrawAmount > self.savingsAccount[self.accountEmail][2]:
+        if withdrawAmount > self.savingsAccount[self.accountLogin][2]:
             print('Insufficient balance')
         else:
-            self.savingsAccount[self.accountEmail][2] -= withdrawAmount
+            self.savingsAccount[self.accountLogin][2] -= withdrawAmount
             print('Withdrawal was successful')
             self.displayBalance()
     
     def deposit(self, depositAmount):
-        self.savingsAccount[self.accountEmail][2] += depositAmount
+        self.savingsAccount[self.accountLogin][2] += depositAmount
         print('Deposit was successful')
         self.displayBalance()
 
     def displayBalance(self):
-        print('Available balance: ',self.savingsAccount[self.accountEmail][2])
+        print('Available balance: ',self.savingsAccount[self.accountLogin][2])
 
 
 # User interface
@@ -110,7 +111,7 @@ while True:
                 print('Enter 1 to withdraw')
                 print('Enter 2 to deposit')
                 print('Enter 3 to display available balance')
-                print('Enter to go back to the previous menu')
+                print('Enter 4 to go back to the previous menu')
 
                 userChoice = int(input())
                 if userChoice == 1:
@@ -130,6 +131,9 @@ while True:
 
                 elif userChoice == 4:
                     break
+
+                else:
+                    print('Please press only 1 or 2 or 3 or 4')
     # Exit
     elif userChoice == 3:
         print('Thank you for your transaction')
