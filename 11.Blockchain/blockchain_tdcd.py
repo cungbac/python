@@ -76,6 +76,6 @@ if __name__ == '__main__':
     print('Is blockchain valid?', bac_blockchain.isValid())
 
     # blockchain.chain[1].data = 'Send 3 more BTC to Ivan'
-    bac_blockchain.chain[1].data = 'Send 3 more BTC to Ivan'
+    bac_blockchain.chain[1].data = 'Send 3 more BTC to someone else'
     bac_blockchain.print_chain()
     print('Is blockchain valid', bac_blockchain.isValid())
